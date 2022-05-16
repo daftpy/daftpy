@@ -1,0 +1,21 @@
+#NavbarWrapper {
+    background-color: rgba(2,18,37,1);
+}
+
+#Navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    padding: 1rem;
+}
+
+#Branding {
+    flex-grow: 2;
+}
+
+#NavItems {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+}
