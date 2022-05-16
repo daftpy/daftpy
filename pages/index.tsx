@@ -19,8 +19,8 @@ export async function getStaticProps() {
 const Home: NextPage<{ allPostsData: PostPreview[] }> = ({ allPostsData }) => {
   console.log(allPostsData)
   const welcomeText: string = `
-    I'm Daftpy, and I have been having random encounters with Python ever 
-    since I graduated high school over a decade ago.
+    I'm Daftpy, and I have been having random encounters with Python for 
+    over a decade ago.
   `
   const welcomeSubText: string = `
     This website was built to share some of my thoughts and projects.
