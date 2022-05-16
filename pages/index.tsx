@@ -52,7 +52,7 @@ const Home: NextPage<{ allPostsData: PostPreview[] }> = ({ allPostsData }) => {
             <h2 className="text-xl font-bold text-center text-slate-300 mb-4">Blog Posts</h2>
             <div id={styles.ArticlePreviews}>
               {allPostsData.map(({ id, date, title, preview }, i) => (
-                <div className="m-8">
+                <div key={id} className="m-8">
                   <h3 className="text-lg font-bold">{ title }</h3>
                   <span className="font-medium text-red-600">{ date }</span>
                   <p className="my-2">{ preview }</p>
