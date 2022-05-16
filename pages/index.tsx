@@ -5,8 +5,19 @@ import styles from '../styles/Home.module.css'
 import BaseLayout from '../components/layout'
 import DaftpyHero from '../components/daftpyHero'
 import DisplayMessage from '../components/displayMessage'
+import { getSortedPostsData, PostPreview } from '../lib/posts'
 
-const Home: NextPage = () => {
+export async function getStaticProps() {
+  const allPostsData: PostPreview[] = getSortedPostsData();
+  return {
+    props: {
+      allPostsData
+    }
+  }
+}
+
+const Home: NextPage<{ allPostsData: PostPreview[] }> = ({ allPostsData }) => {
+  console.log(allPostsData)
   const welcomeText: string = `
     I'm Daftpy, and I have been having random encounters with Python ever 
     since I graduated high school over a decade ago.
@@ -34,8 +45,20 @@ const Home: NextPage = () => {
             text={welcomeText}
             subText={welcomeSubText}
           />
-          <div className="my-12 text-2xl font-light text-center text-slate-400 italic">
+          <div className="my-20 text-2xl font-light text-center text-slate-400 italic">
             <DisplayMessage message={displayMessage}/>
+          </div>
+          <div>
+            <h2 className="text-xl font-bold text-center text-slate-300 mb-4">Blog Posts</h2>
+            <div id={styles.ArticlePreviews}>
+              {allPostsData.map(({ id, date, title, preview }, i) => (
+                <div className="m-8">
+                  <h3 className="text-lg font-bold">{ title }</h3>
+                  <span className="font-medium text-red-600">{ date }</span>
+                  <p className="my-2">{ preview }</p>
+                </div>
+              ))}
+            </div>
           </div>
         </main>
 

@@ -28,3 +28,14 @@
   height: 1em;
   margin-left: 0.5rem;
 }
+
+#ArticlePreviews {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  #ArticlePreviews {
+    flex-direction: row;
+  }
+}
