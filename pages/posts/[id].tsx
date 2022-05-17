@@ -35,16 +35,7 @@ const Post: NextPage<{ postData: PostData }> = ({ postData }) => {
       <div>
         <Head>
           <title>{ postData.title }</title>
-        </Head>
-        <div className="text-slate-300">
-          <DaftpyHero
-            text={welcomeText}
-            subText={welcomeSubText}
-          />
-        </div>
-        <div className="my-16 text-xl font-light text-center text-slate-400 italic">
-          <DisplayMessage message={displayMessage}/>
-        </div>        
+        </Head>      
         <main
           className="text-slate-300 px-2"
         >
@@ -61,6 +52,15 @@ const Post: NextPage<{ postData: PostData }> = ({ postData }) => {
             dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
           />
         </main>
+        <div className="text-slate-300">
+          <DaftpyHero
+            text={welcomeText}
+            subText={welcomeSubText}
+          />
+        </div>
+        <div className="my-16 text-xl font-light text-center text-slate-400 italic">
+          <DisplayMessage message={displayMessage}/>
+        </div>
       </div>
     </BaseLayout>
   )
