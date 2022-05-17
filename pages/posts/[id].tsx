@@ -52,7 +52,7 @@ const Post: NextPage<{ postData: PostData }> = ({ postData }) => {
             dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
           />
         </main>
-        <div className="text-slate-300">
+        <div className="mt-20 text-slate-300">
           <DaftpyHero
             text={welcomeText}
             subText={welcomeSubText}
