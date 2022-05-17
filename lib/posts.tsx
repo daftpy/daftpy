@@ -12,6 +12,14 @@ export interface PostPreview {
     date: string;
 }
 
+export interface PostData {
+  id: string;
+  title: string;
+  date: string;
+  tags: string[];
+  contentHtml: string;
+}
+
 const postsDirectory: string = path.join(process.cwd(), 'posts');
 
 export function getSortedPostsData(): PostPreview[] {
@@ -36,7 +44,6 @@ export function getSortedPostsData(): PostPreview[] {
       preview: matterResult.data['preview']
     };
   });
-  console.log(allPostsData)
 
   return allPostsData.sort(({ date: a }, { date: b }) => {
     if (a < b) {
@@ -47,4 +54,34 @@ export function getSortedPostsData(): PostPreview[] {
       return 0;
     }
   });
+}
+
+export function getAllPostIds(): { params: { id: string; }}[] {
+  const fileNames = fs.readdirSync(postsDirectory);
+  
+  return fileNames.map((fileName) => {
+    return {
+      params: {
+        id: fileName.replace(/\.md$/, ''),
+      },
+    }
+  })
+}
+
+export async function getPostData(id: string) {
+  const fullPath = path.join(postsDirectory, `${id}.md`);
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+
+  const matterResult = matter(fileContents);
+
+  // Use remark to convert markdown into HTML
+  const processedContent = await remark()
+  .use(html)
+  .process(matterResult.content);
+  const contentHtml = processedContent.toString();
+  return {
+    id,
+    contentHtml,
+    ...(matterResult.data as { date: string; title: string; tags: string[]; })
+  }
 }

@@ -19,6 +19,17 @@ const Navbar = (props: Props): JSX.Element => {
               Daftpy {props.home}
             </span>
           }
+          {props.home != true && 
+            <Link href="/">
+              <a>
+                <span
+                  className="text-3xl font-bold text-slate-300"
+                >
+                  Daftpy {props.home}
+                </span>
+              </a>
+            </Link>
+          }
         </div>
         <div 
           id={styles.NavItems}

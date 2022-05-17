@@ -1,0 +1,25 @@
+#Tags {
+    display: flex;
+}
+
+#Tags > * {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin: 1rem 0 0 0;
+}
+#Tags > *:nth-child(2){
+    margin: 1rem 2rem 0 2rem;
+}
+
+#BlogPost p {
+    margin: 2rem 0;
+}
+
+#BlogPost ul {
+    list-style-type: disc;
+}
+
+#BlogPost li {
+    margin: 1rem 0;
+}

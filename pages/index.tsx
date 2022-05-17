@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import BaseLayout from '../components/layout'
 import DaftpyHero from '../components/daftpyHero'
@@ -17,11 +18,12 @@ export async function getStaticProps() {
 }
 
 const Home: NextPage<{ allPostsData: PostPreview[] }> = ({ allPostsData }) => {
-  console.log(allPostsData)
+
   const welcomeText: string = `
     I'm Daftpy, and I have been having random encounters with Python for 
-    over a decade ago.
+    over a decade.
   `
+  
   const welcomeSubText: string = `
     This website was built to share some of my thoughts and projects.
     You'll find some Javascript and Typescript in the mix as well.
@@ -45,18 +47,22 @@ const Home: NextPage<{ allPostsData: PostPreview[] }> = ({ allPostsData }) => {
             text={welcomeText}
             subText={welcomeSubText}
           />
-          <div className="my-20 text-2xl font-light text-center text-slate-400 italic">
+          <div className="my-16 text-xl font-light text-center text-slate-400 italic">
             <DisplayMessage message={displayMessage}/>
           </div>
           <div>
             <h2 className="text-xl font-bold text-center text-slate-300 mb-4">Blog Posts</h2>
             <div id={styles.ArticlePreviews}>
               {allPostsData.map(({ id, date, title, preview }, i) => (
-                <div key={id} className="m-8">
-                  <h3 className="text-lg font-bold">{ title }</h3>
-                  <span className="font-medium text-red-600">{ date }</span>
-                  <p className="my-2">{ preview }</p>
-                </div>
+                <Link href={`/posts/${id}`}>
+                  <a>
+                    <div key={id} className="m-4">
+                      <h3 className="text-lg font-bold">{ title }</h3>
+                      <span className="font-bold text-red-600">{ date }</span>
+                      <p className="my-2">{ preview }</p>
+                    </div>
+                  </a>
+                </Link>
               ))}
             </div>
           </div>
