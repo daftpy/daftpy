@@ -6,6 +6,7 @@ import DisplayMessage from "../../components/displayMessage";
 import BaseLayout from "../../components/layout";
 import { PostPreview } from "../../lib/posts";
 import { getSortedPostsData } from "../../lib/posts";
+import styles from "../../styles/BlogList.module.css";
 
 export async function getStaticProps() {
   const allPostsData: PostPreview[] = getSortedPostsData();
@@ -44,12 +45,17 @@ const BlogList: NextPage<{ allPostsData: PostPreview[] }> = ({ allPostsData }) =
       </div>
       <div className="text-slate-300">
         <h2 className="text-xl font-bold text-center text-slate-300 mb-4">Blog Posts</h2>
-        {allPostsData.map(({ id, date, title, preview }, i) => (
+        {allPostsData.map(({ id, date, title, preview, tags }, i) => (
           <Link key={id} href={`/posts/${id}`}>
             <a>
               <div className="mx-4 my-10">
                 <h3 className="text-lg font-bold">{ title }</h3>
                 <span className="font-bold text-red-600">{ date }</span>
+                <div id={styles.Tags} className="font-medium">
+                  {tags.map((tag, i) => (
+                    <div key={tag} className="bg-amber-600 text-white drop-shadow-md text-shadow px-2 my-2 rounded-md">{ tag }</div>
+                  ))}
+                </div>
                 <p className="my-2">{ preview }</p>
               </div>
             </a>
