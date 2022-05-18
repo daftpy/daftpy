@@ -43,7 +43,7 @@ const Post: NextPage<{ postData: PostData }> = ({ postData }) => {
           <div className="font-medium text-red-600">Published { postData.date }</div>
           <div id={styles.Tags} className="font-medium">
             {postData.tags.map((tag, i) => (
-              <div key={tag} className="bg-amber-600 px-2 my-2 rounded-md">{ tag }</div>
+              <div key={tag} className="bg-amber-600 text-white drop-shadow-md text-shadow px-2 my-2 rounded-md">{ tag }</div>
             ))}
           </div>
           <div
