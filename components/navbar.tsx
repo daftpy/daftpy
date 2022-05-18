@@ -35,10 +35,10 @@ const Navbar = (props: Props): JSX.Element => {
           id={styles.NavItems}
           className="font-bold text-slate-300"
         >
-          <Link href="#">
+          <Link href="/posts">
             <a>Blog</a>
           </Link>
-          <Link href="#">
+          <Link href="/projects">
             <a>Projects</a>
           </Link>
           <Link href="#">

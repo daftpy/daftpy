@@ -56,7 +56,7 @@ const Home: NextPage<{ allPostsData: PostPreview[] }> = ({ allPostsData }) => {
               {allPostsData.map(({ id, date, title, preview }, i) => (
                 <Link key={id} href={`/posts/${id}`}>
                   <a>
-                    <div className="m-4">
+                    <div className="mx-4 my-6">
                       <h3 className="text-lg font-bold">{ title }</h3>
                       <span className="font-bold text-red-600">{ date }</span>
                       <p className="my-2">{ preview }</p>
