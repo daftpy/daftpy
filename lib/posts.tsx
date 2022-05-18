@@ -10,6 +10,7 @@ export interface PostPreview {
     title: string;
     preview: string;
     date: string;
+    tags: []
 }
 
 export interface PostData {
@@ -41,7 +42,8 @@ export function getSortedPostsData(): PostPreview[] {
       id: id,
       title: matterResult.data['title'],
       date: matterResult.data['date'],
-      preview: matterResult.data['preview']
+      preview: matterResult.data['preview'],
+      tags: matterResult.data['tags']
     };
   });
 
