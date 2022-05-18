@@ -48,9 +48,9 @@ const ProjectsList: NextPage<{ allProjectsData: ProjectPreview[] }> = ({ allProj
         <main>
           <h1 className="mb-4 text-2xl font-bold text-center">Projects</h1>
           {allProjectsData.map(({ id, title, language, tags, preview, priority }, i) => (
-            <Link href={`/projects/${id}`}>
+            <Link href={`/projects/${id}`} key={id}>
               <a>
-                <div key={id}>
+                <div>
                   <h3 className="text-xl font-bold">{ title }</h3>
                   <span className="font-bold text-red-600">{ language }</span>
                   <div id={styles.Tags} className="font-medium">
