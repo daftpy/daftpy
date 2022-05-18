@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from '../styles/Navbar.module.css';
+import styles from '../styles/components/Navbar.module.css';
 
 interface Props {
   home?: boolean;

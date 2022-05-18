@@ -4,9 +4,21 @@ import Head from "next/head";
 import DaftpyHero from "../../components/daftpyHero";
 import DisplayMessage from "../../components/displayMessage";
 import BaseLayout from "../../components/layout";
+import { getSortedProjectsData, ProjectPreview } from "../../lib/projects";
+import styles from "../../styles/ProjectsList.module.css";
+import { language } from "gray-matter";
+
+export async function getStaticProps() {
+  const allProjectsData: ProjectPreview[] = getSortedProjectsData();
+  return {
+    props: {
+      allProjectsData
+    }
+  }
+}
 
 
-const ProjectsList: NextPage = () => {
+const ProjectsList: NextPage<{ allProjectsData: ProjectPreview[] }> = ({ allProjectsData }) => {
   const text: string = `
     Below is a list of my 'favorite' projects I think you should see!
   `
@@ -23,20 +35,38 @@ const ProjectsList: NextPage = () => {
   `
   return (
     <BaseLayout>
-      <div className="mb-20 text-slate-300">
-        <Head>
-          <title>Daftpy | Projects</title>
-        </Head>
-        <DaftpyHero
-          text={text}
-          subText={subText}
-        />
-      </div>
-      <div className="text-slate-300 text-center">
-        <h1 className="text-2xl font-bold">Projects</h1>
-      </div>
-      <div className="my-20 text-xl font-light text-center text-slate-400 italic">
-        <DisplayMessage message={displayMessage}/>
+      <div className="text-slate-300">
+        <div className="mb-16">
+          <Head>
+            <title>Daftpy | Projects</title>
+          </Head>
+          <DaftpyHero
+            text={text}
+            subText={subText}
+          />
+        </div>
+        <main>
+          <h1 className="mb-4 text-2xl font-bold text-center">Projects</h1>
+          {allProjectsData.map(({ id, title, language, tags, preview, priority }, i) => (
+            <Link href={`/projects/${id}`}>
+              <a>
+                <div key={id}>
+                  <h3 className="text-xl font-bold">{ title }</h3>
+                  <span className="font-bold text-red-600">{ language }</span>
+                  <div id={styles.Tags} className="font-medium">
+                    {tags.map((tag, i) => (
+                      <div key={tag} className="bg-amber-600 text-white drop-shadow-md text-shadow px-2 rounded-md">{ tag }</div>
+                    ))}
+                  </div>
+                  <p className="my-2">{ preview }</p>
+                </div>
+              </a>
+            </Link>
+          ))}
+        </main>
+        <div className="my-20 text-xl font-light text-center text-slate-400 italic">
+          <DisplayMessage message={displayMessage}/>
+        </div>     
       </div>
     </BaseLayout>
   )

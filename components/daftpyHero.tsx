@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import styles from '../styles/DaftpyHero.module.css';
+import styles from '../styles/components/DaftpyHero.module.css';
 
 interface Props {
   text: string;

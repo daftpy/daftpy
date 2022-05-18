@@ -1,7 +1,6 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import styles from "../styles/BaseLayout.module.css";
-import Link from 'next/link';
+import styles from "../styles/components/BaseLayout.module.css";
 
 import Navbar from "./navbar";
 
