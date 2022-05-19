@@ -67,7 +67,7 @@ const Home: NextPage<{
               {allPostsData.map(({ id, date, title, preview, tags }, i) => (
                 <Link key={id} href={`/posts/${id}`}>
                   <a>
-                    <div className="mx-4 my-6">
+                    <div className="my-6">
                       <h3 className="text-lg font-bold">{ title }</h3>
                       <span className="font-bold text-red-600">{ date }</span>
                       <Tags tags={tags} />

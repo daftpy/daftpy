@@ -37,4 +37,13 @@
   #ArticlePreviews {
     flex-direction: row;
   }
+  #ArticlePreviews > * {
+    width: 50%;
+  }
+  #ArticlePreviews >*:first-child  {
+    margin-right: 1rem;
+  }
+  #ArticlePreviews > *:last-child {
+    margin-left: 1rem;
+  }
 }
