@@ -33,21 +33,6 @@
   flex-direction: column;
 }
 
-#Tags {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-#Tags > * {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  margin: 1rem 1rem 0 0;
-}
-#Tags > *:last-child {
-  margin: 1rem 0 0 0;
-}
-
 @media (min-width: 768px) {
   #ArticlePreviews {
     flex-direction: row;

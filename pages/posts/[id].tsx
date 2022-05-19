@@ -7,6 +7,7 @@ import { getAllPostIds, getPostData } from "../../lib/posts";
 import styles from '../../styles/Post.module.css';
 import DaftpyHero from "../../components/daftpyHero";
 import DisplayMessage from "../../components/displayMessage";
+import Tags from "../../components/tags";
 
 interface PostData {
   title: string;
@@ -41,11 +42,7 @@ const Post: NextPage<{ postData: PostData }> = ({ postData }) => {
         >
           <h1 className="text-2xl font-bold">{ postData.title }</h1>
           <div className="font-medium text-red-600">Published { postData.date }</div>
-          <div id={styles.Tags} className="font-medium">
-            {postData.tags.map((tag, i) => (
-              <div key={tag} className="bg-amber-600 text-white drop-shadow-md text-shadow px-2 my-2 rounded-md">{ tag }</div>
-            ))}
-          </div>
+          <Tags tags={ postData.tags } />
           <div
             id={styles.BlogPost}
             className="mt-4 text-lg"

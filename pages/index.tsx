@@ -6,6 +6,7 @@ import styles from '../styles/Home.module.css'
 import BaseLayout from '../components/layout'
 import DaftpyHero from '../components/daftpyHero'
 import DisplayMessage from '../components/displayMessage'
+import Tags from '../components/tags'
 import { getSortedPostsData, PostPreview } from '../lib/posts'
 
 export async function getStaticProps() {
@@ -59,11 +60,7 @@ const Home: NextPage<{ allPostsData: PostPreview[] }> = ({ allPostsData }) => {
                     <div className="mx-4 my-6">
                       <h3 className="text-lg font-bold">{ title }</h3>
                       <span className="font-bold text-red-600">{ date }</span>
-                      <div id={styles.Tags} className="font-medium">
-                        {tags.map((tag, i) => (
-                          <div key={tag} className="bg-amber-600 text-white drop-shadow-md text-shadow px-2 my-2 rounded-md">{ tag }</div>
-                        ))}
-                      </div>
+                      <Tags tags={tags} />
                       <p className="my-2">{ preview }</p>
                     </div>
                   </a>

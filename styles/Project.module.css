@@ -1,0 +1,10 @@
+@media (min-width: 576px) {
+    #ProjectMetaData {
+        flex-direction: row;
+        justify-items: end;
+    }
+    #Github {
+        justify-content: end;
+        margin: 0;
+    }
+}

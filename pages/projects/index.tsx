@@ -5,8 +5,7 @@ import DaftpyHero from "../../components/daftpyHero";
 import DisplayMessage from "../../components/displayMessage";
 import BaseLayout from "../../components/layout";
 import { getSortedProjectsData, ProjectPreview } from "../../lib/projects";
-import styles from "../../styles/ProjectsList.module.css";
-import { language } from "gray-matter";
+import Tags from "../../components/tags";
 
 export async function getStaticProps() {
   const allProjectsData: ProjectPreview[] = getSortedProjectsData();
@@ -53,11 +52,7 @@ const ProjectsList: NextPage<{ allProjectsData: ProjectPreview[] }> = ({ allProj
                 <div>
                   <h3 className="text-xl font-bold">{ title }</h3>
                   <span className="font-bold text-red-600">{ language }</span>
-                  <div id={styles.Tags} className="font-medium">
-                    {tags.map((tag, i) => (
-                      <div key={tag} className="bg-amber-600 text-white drop-shadow-md text-shadow px-2 rounded-md">{ tag }</div>
-                    ))}
-                  </div>
+                  <Tags tags={tags} />
                   <p className="my-2">{ preview }</p>
                 </div>
               </a>
