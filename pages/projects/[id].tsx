@@ -8,6 +8,7 @@ import { getAllProjectIds, getProjectData } from "../../lib/projects";
 import DaftpyHero from "../../components/daftpyHero";
 import Tags from "../../components/tags";
 import styles from "../../styles/Project.module.css";
+import blogStyle from "../../styles/Post.module.css"
 
 
 interface ProjectData {
@@ -57,10 +58,11 @@ const Project: NextPage<{ projectData: ProjectData }> = ({ projectData }) => {
           </div>
         </div>
         <Tags tags={ projectData.tags }/>
-        <div className="my-16 text-xl font-light text-center text-slate-400 italic">
+        <div className="my-14 text-xl font-light text-center text-slate-400 italic">
           { projectData.preview }
         </div>
         <div
+          id={blogStyle.BlogPost}
           className="mt-8 text-lg"
           dangerouslySetInnerHTML={{ __html: projectData.contentHtml }}
         />
