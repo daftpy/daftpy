@@ -38,7 +38,7 @@ const Post: NextPage<{ postData: PostData }> = ({ postData }) => {
           <title>{ postData.title }</title>
         </Head>      
         <main
-          className="text-slate-300 px-2"
+          className="text-slate-300 px-2 mb-24"
         >
           <h1 className="text-2xl font-bold">{ postData.title }</h1>
           <div className="font-medium text-red-600">Published { postData.date }</div>
@@ -49,7 +49,7 @@ const Post: NextPage<{ postData: PostData }> = ({ postData }) => {
             dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
           />
         </main>
-        <div className="mt-20 text-slate-300">
+        <div className="text-slate-300">
           <DaftpyHero
             text={welcomeText}
             subText={welcomeSubText}

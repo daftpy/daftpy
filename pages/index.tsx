@@ -8,17 +8,23 @@ import DaftpyHero from '../components/daftpyHero'
 import DisplayMessage from '../components/displayMessage'
 import Tags from '../components/tags'
 import { getSortedPostsData, PostPreview } from '../lib/posts'
+import { getSortedProjectsData, ProjectPreview } from '../lib/projects'
 
 export async function getStaticProps() {
   const allPostsData: PostPreview[] = getSortedPostsData();
+  const allProjectsData: ProjectPreview[] = getSortedProjectsData();
   return {
     props: {
-      allPostsData
+      allPostsData,
+      allProjectsData
     }
   }
 }
 
-const Home: NextPage<{ allPostsData: PostPreview[] }> = ({ allPostsData }) => {
+const Home: NextPage<{
+  allPostsData: PostPreview[],
+  allProjectsData: ProjectPreview[]
+}> = ({ allPostsData, allProjectsData }) => {
 
   const welcomeText: string = `
     I'm Daftpy, and I have been having random encounters with Python for 
@@ -52,7 +58,11 @@ const Home: NextPage<{ allPostsData: PostPreview[] }> = ({ allPostsData }) => {
             <DisplayMessage message={displayMessage}/>
           </div>
           <div>
-            <h2 className="text-xl font-bold text-center text-slate-300 mb-4">Blog Posts</h2>
+            <Link href="/projects">
+              <a>
+                <h2 className="text-xl font-bold text-center text-slate-300 mb-4">Blog Posts</h2>
+              </a>
+            </Link>
             <div id={styles.ArticlePreviews}>
               {allPostsData.map(({ id, date, title, preview, tags }, i) => (
                 <Link key={id} href={`/posts/${id}`}>
@@ -66,6 +76,27 @@ const Home: NextPage<{ allPostsData: PostPreview[] }> = ({ allPostsData }) => {
                   </a>
                 </Link>
               ))}
+            </div>
+          </div>
+          <div className="mt-8 w-full">
+            <Link href="/projects">
+              <a>
+                <h2 className="text-xl font-bold text-center text-slate-300 mb-4">Projects</h2>
+              </a>
+            </Link>
+            <div>
+            {allProjectsData.map(({ id, title, language, tags, preview }, i) => (
+              <Link href={`/projects/${id}`} key={id}>
+                <a>
+                  <div>
+                    <h3 className="text-xl font-bold">{ title }</h3>
+                    <span className="font-bold text-red-600">{ language }</span>
+                    <Tags tags={tags} />
+                    <p className="my-2">{ preview }</p>
+                  </div>
+                </a>
+              </Link>
+            ))}
             </div>
           </div>
         </main>

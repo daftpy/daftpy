@@ -34,7 +34,7 @@ const Project: NextPage<{ projectData: ProjectData }> = ({ projectData }) => {
       <Head>
         <title>Daftpy | { projectData.title }</title>
       </Head>
-      <main className="text-slate-300 mb-20">
+      <main className="text-slate-300 mb-24">
         <div id={styles.ProjectMetaData} className="flex flex-col flex-wrap">
           <div>
             <h1 className="text-2xl font-bold">Test { projectData.title }</h1>
